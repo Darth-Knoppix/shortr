@@ -25,7 +25,7 @@
   <tbody id="links">
     <%= for link <- @links do %>
       <tr id={"link-#{link.hash}"}>
-        <td><%= link.hash %></td>
+        <td><%= link.hash %> <%= link "Visit", to: Routes.link_path(@socket, :get_and_redirect, link.hash), target: "_blank" %></td>
         <td><%= link.url %></td>
 
         <td>

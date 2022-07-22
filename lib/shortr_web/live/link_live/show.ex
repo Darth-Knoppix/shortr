@@ -9,13 +9,19 @@ defmodule ShortrWeb.LinkLive.Show do
   end
 
   @impl true
-  def handle_params(%{"id" => id}, _, socket) do
-    {:noreply,
-     socket
-     |> assign(:page_title, page_title(socket.assigns.live_action))
-     |> assign(:link, Links.get_link!(id))}
+  def handle_params(params, _, socket) do
+    {:noreply, apply_action(socket, socket.assigns.live_action, params)}
   end
 
-  defp page_title(:show), do: "Show Link"
-  defp page_title(:edit), do: "Edit Link"
+  defp apply_action(socket, :show, %{"id" => id}) do
+    socket
+    |> assign(:page_title, "Show Link")
+    |> assign(:link, Shortr.Metrics.list_visits(id))
+  end
+
+  defp apply_action(socket, :edit, %{"id" => id}) do
+    socket
+    |> assign(:page_title, "Edit Link")
+    |> assign(:link, Links.get_link!(id))
+  end
 end
