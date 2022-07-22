@@ -4,7 +4,7 @@
   <.modal return_to={Routes.link_index_path(@socket, :index)}>
     <.live_component
       module={ShortrWeb.LinkLive.FormComponent}
-      id={@link.id || :new}
+      id={@link.hash || :new}
       title={@page_title}
       action={@live_action}
       link={@link}
@@ -24,14 +24,14 @@
   </thead>
   <tbody id="links">
     <%= for link <- @links do %>
-      <tr id={"link-#{link.id}"}>
+      <tr id={"link-#{link.hash}"}>
         <td><%= link.hash %></td>
         <td><%= link.url %></td>
 
         <td>
           <span><%= live_redirect "Show", to: Routes.link_show_path(@socket, :show, link) %></span>
           <span><%= live_patch "Edit", to: Routes.link_index_path(@socket, :edit, link) %></span>
-          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: link.id, data: [confirm: "Are you sure?"] %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: link.hash, data: [confirm: "Are you sure?"] %></span>
         </td>
       </tr>
     <% end %>

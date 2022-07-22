@@ -4,7 +4,7 @@
   <.modal return_to={Routes.link_show_path(@socket, :show, @link)}>
     <.live_component
       module={ShortrWeb.LinkLive.FormComponent}
-      id={@link.id}
+      id={@link.hash}
       title={@page_title}
       action={@live_action}
       link={@link}

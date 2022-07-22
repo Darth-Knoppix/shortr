@@ -17,7 +17,13 @@ defmodule ShortrWeb.Router do
   scope "/", ShortrWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    # get "/", PageController, :index
+    live "/", LinkLive.Index, :index
+    live "/l/new", LinkLive.Index, :new
+    live "/l/:id/edit", LinkLive.Index, :edit
+    live "/l/:id", LinkLive.Show, :show
+    live "/l/:id/edit1", LinkLive.Show, :edit
+    get "/s/:id", LinkController, :get_and_redirect
   end
 
   # Other scopes may use custom stacks.
