@@ -1,0 +1,305 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# This program built for i386-apple-darwin11.3.0
+
+# Make data base, printed on Fri Jul 22 19:54:20 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+FIG_WORKFLOWS_KEYBIND = ^f
+# environment
+NVM_INC = /Users/darthknoppix/.nvm/versions/node/v16.13.1/include/node
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile
+CURDIR := /Users/darthknoppix/projects/shortr
+# makefile
+SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-gb","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/bin/make
+# makefile
+MAKEFILE_LIST := 
+# environment
+GO111MODULE = on
+# environment
+__CFBundleIdentifier = com.microsoft.VSCode
+# environment
+INFOPATH = /opt/homebrew/share/info:
+# environment
+P9K_SSH = 0
+# environment
+VSCODE_CWD = /Users/darthknoppix/projects/shortr
+# environment
+PATH = /Users/darthknoppix/.asdf/shims:/Users/darthknoppix/.asdf/bin:/Users/darthknoppix/.emacs.d/bin:/opt/homebrew/opt/openssl@1.1/bin:/Users/darthknoppix/.poetry/bin:/Users/darthknoppix/.rbenv/shims:/Users/darthknoppix/.pyenv/plugins/pyenv-virtualenv/shims:/opt/homebrew/opt/openjdk/bin:/Users/darthknoppix/.nvm/versions/node/v16.13.1/bin:/Users/darthknoppix/.pyenv/bin:/Users/darthknoppix/.gem/ruby/3.0.0/bin:/opt/homebrew/opt/ruby/bin:/Users/darthknoppix/.deno/bin:/opt/homebrew/opt/texinfo/bin:/Users/darthknoppix/bin:/usr/local/bin:/Users/darthknoppix/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/go/bin:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/darthknoppix/.cargo/bin:/Users/darthknoppix/.fig/bin:/Users/darthknoppix/.local/bin:/Users/darthknoppix/Library/Application Support/Coursier/bin:/Users/darthknoppix/go/bin
+# environment
+LSCOLORS = Gxfxcxdxbxegedabagacad
+# environment
+GOPATH = /Users/darthknoppix/go
+# environment
+NVM_BIN = /Users/darthknoppix/.nvm/versions/node/v16.13.1/bin
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+PYENV_ROOT = /Users/darthknoppix/.pyenv
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+# environment
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.DDTSQFVynO/Listeners
+# automatic
+%F = $(notdir $%)
+# environment
+TTY = not a tty
+# environment
+FIG_PID = 51003
+# environment
+PWD = /Users/darthknoppix/projects/shortr
+# environment
+ERL_AFLAGS = -kernel shell_history enabled
+# environment
+HOMEBREW_CELLAR = /opt/homebrew/Cellar
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+MANPATH = /Users/darthknoppix/.nvm/versions/node/v16.13.1/share/man:/opt/homebrew/share/man::
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+PYENV_SHELL = zsh
+# environment
+HOME = /Users/darthknoppix
+# environment
+KERL_CONFIGURE_OPTIONS = --with-ssl=/opt/homebrew/opt/openssl@3
+# default
+MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
+# environment
+VSCODE_CLI = 1
+# environment
+VSCODE_CODE_CACHE_PATH = /Users/darthknoppix/Library/Application Support/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
+# environment
+LOGNAME = darthknoppix
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+NVM_CD_FLAGS = -q
+# environment
+ZSH = /Users/darthknoppix/.oh-my-zsh
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XPC_FLAGS = 0x0
+# environment
+COLORTERM = truecolor
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+LC_TERMINAL = iTerm2
+# environment
+SHLVL = 3
+# environment
+FIG_TERM = 1
+# default
+MAKE_VERSION := 3.81
+# environment
+USER = darthknoppix
+# environment
+FIG_TERM_VERSION = 4.4.1
+# default
+MAKECMDGOALS := all
+# environment
+TERM_SESSION_ID = w0t1p0:3371D17E-435E-471B-8D99-8E82E2D46DC4
+# environment
+LESS = -R
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+FIG_INTEGRATION_VERSION = 8
+# default
+MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
+# environment
+TERM_PROGRAM = iTerm.app
+# default
+.VARIABLES := 
+# environment
+TMPDIR = /var/folders/84/4cx54b4n7ms8wm4zhzp65lth0000gn/T/
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /Users/darthknoppix/Library/Application Support/Code/1.69.2-main.sock
+# environment
+MallocNanoZone = 0
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+TERM_PROGRAM_VERSION = 3.4.16
+# environment
+NVM_DIR = /Users/darthknoppix/.nvm
+# environment
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.57206476.57206484.3393EC7C-3D4C-4A6D-AD1A-138DE538612A
+# environment
+LC_TERMINAL_VERSION = 3.4.16
+# environment
+HOMEBREW_PREFIX = /opt/homebrew
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
+# environment
+ITERM_SESSION_ID = w0t1p0:3371D17E-435E-471B-8D99-8E82E2D46DC4
+# environment
+HOMEBREW_REPOSITORY = /opt/homebrew
+# environment
+COLORFGBG = 15;0
+# environment
+__CF_USER_TEXT_ENCODING = 0x1F5:0:2
+# environment
+COMMAND_MODE = unix2003
+# default
+MAKEFILES := 
+# environment
+RBENV_SHELL = zsh
+# automatic
+<F = $(notdir $<)
+# environment
+ITERM_PROFILE = Default
+# environment
+EDITOR = nano
+# environment
+PAGER = less
+# environment
+LC_ALL = C
+# environment
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE = fg=2
+# environment
+P9K_TTY = old
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# environment
+ASDF_DIR = /Users/darthknoppix/.asdf
+# environment
+PYENV_VIRTUALENV_INIT = 1
+# environment
+MAKELEVEL := 0
+# makefile
+.DEFAULT_GOAL := 
+# environment
+LANG = C
+# environment
+TERM = xterm-256color
+# environment
+_P9K_TTY = not a tty
+# environment
+VSCODE_PID = 84363
+# variable set hash-table stats:
+# Load=102/1024=10%, Rehash=0, Collisions=7/122=6%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 16777232, inode 57446675): 15 files, no impossibilities.
+
+# 15 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+all:
+#  Command-line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  A default, MAKEFILES, or -include/sinclude makefile.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+makefile:
+#  A default, MAKEFILES, or -include/sinclude makefile.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+GNUmakefile:
+#  A default, MAKEFILES, or -include/sinclude makefile.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# files hash-table stats:
+# Load=6/1024=1%, Rehash=0, Collisions=0/17=0%
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# # of strings in strcache: 0
+# # of strcache buffers: 0
+# strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
+# strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
+
+# Finished Make data base on Fri Jul 22 19:54:20 2022
+
+ 
+make: *** No rule to make target `all'.  Stop.
+
