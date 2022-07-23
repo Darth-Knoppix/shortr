@@ -17,12 +17,14 @@ defmodule ShortrWeb.LinkLive.Index do
   defp apply_action(socket, :edit, %{"id" => id}) do
     socket
     |> assign(:page_title, "Edit Link")
+    |> assign(:action_label, "Save change")
     |> assign(:link, Links.get_link!(id))
   end
 
   defp apply_action(socket, :new, _params) do
     socket
     |> assign(:page_title, "New Link")
+    |> assign(:action_label, "Shorten link")
     |> assign(:link, %Link{})
   end
 
@@ -30,6 +32,12 @@ defmodule ShortrWeb.LinkLive.Index do
     socket
     |> assign(:page_title, "Listing Links")
     |> assign(:link, nil)
+  end
+
+  defp apply_action(socket, :show, %{"id" => id}) do
+    socket
+    |> assign(:page_title, "Show Link")
+    |> assign(:link, Shortr.Metrics.list_visits(id))
   end
 
   @impl true

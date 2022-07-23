@@ -1,4 +1,9 @@
-<h1>Listing Links</h1>
+<div class="flex justify-between my-4">
+  <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200">Listing Links</h1>
+  <%= if !Enum.empty?(@links) do %>
+    <%= live_patch "New Link", to: Routes.link_index_path(@socket, :new), class: "btn btn-primary" %>
+  <% end %>
+</div>
 
 <%= if @live_action in [:new, :edit] do %>
   <.modal return_to={Routes.link_index_path(@socket, :index)}>
@@ -8,34 +13,69 @@
       title={@page_title}
       action={@live_action}
       link={@link}
+      action_label={@action_label}
       return_to={Routes.link_index_path(@socket, :index)}
     />
   </.modal>
 <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Hash</th>
-      <th>Url</th>
+<%= if @live_action in [:show] do %>
+  <.modal return_to={Routes.link_index_path(@socket, :index)}>
+    <div class="stats shadow">
+      <div class="stat">
+        <div class="stat-title">Total Page Views</div>
+        <div class="stat-value"><%= Enum.count(@link.views) %></div>
+        <div class="stat-desc flex items-center">
+          <%= @link.hash %>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+          <b><%= @link.url %></b>
+        </div>
+      </div>
+    </div>
+  </.modal>
+<% end %>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody id="links">
-    <%= for link <- @links do %>
-      <tr id={"link-#{link.hash}"}>
-        <td><%= link.hash %> <%= link "Visit", to: Routes.link_path(@socket, :get_and_redirect, link.hash), target: "_blank" %></td>
-        <td><%= link.url %></td>
-
-        <td>
-          <span><%= live_redirect "Show", to: Routes.link_show_path(@socket, :show, link) %></span>
-          <span><%= live_patch "Edit", to: Routes.link_index_path(@socket, :edit, link) %></span>
-          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: link.hash, data: [confirm: "Are you sure?"] %></span>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<span><%= live_patch "New Link", to: Routes.link_index_path(@socket, :new) %></span>
+<%= if Enum.empty?(@links) do %>
+  <div class="hero my-10">
+    <div class="hero-content text-center">
+      <div class="max-w-md">
+        <h1 class="text-5xl font-bold"><span aria-label="hand wave" role="img">👋</span> Welcome to Shortr </h1>
+        <p class="py-4 text-lg">This is a simple link shortener app written in Elixir, built on Pheonix and uses Tailwind and DaisyUI for styling. Create your first shortened link to get started!</p>
+        <%= live_patch "Shorten your first link", to: Routes.link_index_path(@socket, :new), class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="relative bg-slate-50 rounded-xl overflow-hidden dark:bg-slate-800/25">
+    <div class="relative rounded-xl overflow-auto border border-slate-100 dark:border-slate-700 ">
+      <div class="overflow-hidden my-8">
+        <table class="table-auto w-full border-collapse">
+          <thead>
+            <tr>
+              <th class="border-b dark:border-slate-600 font-medium p-4 pt-0 pb-3 text-slate-700 dark:text-slate-200 text-left">Short Hash</th>
+              <th class="border-b dark:border-slate-600 font-medium p-4 pt-0 pb-3 text-slate-700 dark:text-slate-200 text-left">Link</th>
+              <th class="border-b dark:border-slate-600 font-medium p-4 pt-0 pb-3 text-slate-700 dark:text-slate-200 text-left">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="links" class="bg-white dark:bg-slate-800">
+            <%= for link <- @links do %>
+              <tr id={"link-#{link.hash}"}>
+                <td class="border-b border-slate-100 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-300"><%= link.hash %> <%= link "Visit", to: Routes.link_path(@socket, :get_and_redirect, link.hash), target: "_blank", class: "btn btn-xs" %></td>
+                <td class="border-b border-slate-100 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-300"><%= link.url %></td>
+                <td class="border-b border-slate-100 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-300">
+                  <div class="btn-group">
+                    <%= live_patch "Show", to: Routes.link_index_path(@socket, :show, link), class: "btn btn-sm btn-accent btn-outline" %>
+                    <%= live_patch "Edit", to: Routes.link_index_path(@socket, :edit, link), class: "btn btn-sm btn-warning btn-outline" %>
+                    <%= link "Delete", to: "#", phx_click: "delete", phx_value_id: link.hash, data: [confirm: "Are you sure?"], class: "btn btn-sm btn-error btn-outline" %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -26,7 +26,8 @@ config :shortr, ShortrWeb.Endpoint,
   secret_key_base: "yIgAZjbrDWqIm8If8psLbW00LQCjncbKjdczzLyKHN9RdPlpD4aTmxzaSVGYNWvh",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
 # ## SSL Support
