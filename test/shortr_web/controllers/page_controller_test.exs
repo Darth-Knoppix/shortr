@@ -3,6 +3,6 @@ defmodule ShortrWeb.PageControllerTest do
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")
-    assert html_response(conn, 200) =~ "Lets shorten some links!"
+    assert html_response(conn, 200) =~ "Let's shorten some links!"
   end
 end
