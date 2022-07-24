@@ -7,12 +7,14 @@ defmodule Shortr.MetricsTest do
     alias Shortr.Metrics.Visit
 
     import Shortr.MetricsFixtures
+    import Shortr.LinksFixtures
 
     @invalid_attrs %{agent: nil, ip: nil}
 
     test "list_visits/0 returns all visits" do
       visit = visit_fixture()
-      assert Metrics.list_visits() == [visit]
+      link = Metrics.list_visits(visit.hash)
+      assert link.views == [visit]
     end
 
     test "get_visit!/1 returns the visit with given id" do
@@ -22,14 +24,15 @@ defmodule Shortr.MetricsTest do
 
     test "create_visit/1 with valid data creates a visit" do
       valid_attrs = %{agent: "some agent", ip: "some ip"}
+      link = link_fixture()
 
-      assert {:ok, %Visit{} = visit} = Metrics.create_visit(valid_attrs)
+      assert {:ok, %Visit{} = visit} = Metrics.create_visit(link, valid_attrs)
       assert visit.agent == "some agent"
       assert visit.ip == "some ip"
     end
 
     test "create_visit/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Metrics.create_visit(@invalid_attrs)
+      assert {:error, %Ecto.Changeset{}} = Metrics.create_visit(link_fixture(), @invalid_attrs)
     end
 
     test "update_visit/2 with valid data updates the visit" do

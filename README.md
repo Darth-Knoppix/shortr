@@ -7,10 +7,10 @@ An example URL shortener Phoenix app.
 - Generate a CUID for the "short" hash (not as short as it could be but does the job)
 - Single page feel built using Live View
 - Tracks visits to URLs
+- Simple auth
 
 ## TODO
 
-- [ ] Auth (https://hexdocs.pm/phoenix/mix_phx_gen_auth.html#content)
 - [ ] Deploy to demo URL and allow limited usage (30 links?)
 - [ ] Make a graph from visit data
 

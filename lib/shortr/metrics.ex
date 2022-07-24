@@ -14,7 +14,7 @@ defmodule Shortr.Metrics do
 
   ## Examples
 
-      iex> list_visits()
+      iex> list_visits(hash)
       [%Visit{}, ...]
 
   """
@@ -51,7 +51,8 @@ defmodule Shortr.Metrics do
 
   """
   def create_visit(link, attrs \\ %{}) do
-    Ecto.build_assoc(link, :views, attrs)
+    Ecto.build_assoc(link, :views)
+    |> Visit.changeset(attrs)
     |> Repo.insert()
   end
 

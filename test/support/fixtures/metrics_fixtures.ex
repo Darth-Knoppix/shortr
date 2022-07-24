@@ -1,4 +1,6 @@
 defmodule Shortr.MetricsFixtures do
+  alias Shortr.LinksFixtures
+
   @moduledoc """
   This module defines test helpers for creating
   entities via the `Shortr.Metrics` context.
@@ -8,13 +10,14 @@ defmodule Shortr.MetricsFixtures do
   Generate a visit.
   """
   def visit_fixture(attrs \\ %{}) do
-    {:ok, visit} =
+    new_attrs =
       attrs
       |> Enum.into(%{
         agent: "some agent",
         ip: "some ip"
       })
-      |> Shortr.Metrics.create_visit()
+
+    {:ok, visit} = Shortr.Metrics.create_visit(LinksFixtures.link_fixture(), new_attrs)
 
     visit
   end
