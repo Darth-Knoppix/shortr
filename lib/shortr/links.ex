@@ -13,12 +13,12 @@ defmodule Shortr.Links do
 
   ## Examples
 
-      iex> list_links()
+      iex> list_links(1)
       [%Link{}, ...]
 
   """
-  def list_links do
-    Repo.all(Link)
+  def list_links(user_id) do
+    Repo.all(from l in Link, where: [user_id: ^user_id])
   end
 
   @doc """
@@ -42,15 +42,15 @@ defmodule Shortr.Links do
 
   ## Examples
 
-      iex> create_link(%{field: value})
+      iex> create_link(%User{}, %{field: value})
       {:ok, %Link{}}
 
-      iex> create_link(%{field: bad_value})
+      iex> create_link(%User{}, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_link(attrs \\ %{}) do
-    %Link{}
+  def create_link(user, attrs \\ %{}) do
+    Ecto.build_assoc(user, :links)
     |> Link.changeset(attrs)
     |> Repo.insert()
   end

@@ -3,6 +3,7 @@ defmodule Shortr.Links.Link do
   import Ecto.Changeset
   alias Shortr.Ecto.HashId
   alias Shortr.Metrics.Visit
+  alias Shortr.Accounts.User
 
   @primary_key {:hash, HashId, [autogenerate: true]}
   @derive {Phoenix.Param, key: :hash}
@@ -10,6 +11,7 @@ defmodule Shortr.Links.Link do
     field :url, :string
 
     has_many :views, Visit, foreign_key: :hash
+    belongs_to :user, User
 
     timestamps()
   end

@@ -2,6 +2,7 @@ defmodule ShortrWeb.LinkLive.FormComponent do
   use ShortrWeb, :live_component
 
   alias Shortr.Links
+  alias Shortr.Accounts
 
   @impl true
   def update(%{link: link} = assigns, socket) do
@@ -41,7 +42,9 @@ defmodule ShortrWeb.LinkLive.FormComponent do
   end
 
   defp save_link(socket, :new, link_params) do
-    case Links.create_link(link_params) do
+    user = Accounts.get_user!(socket.assigns.current_user_id)
+
+    case Links.create_link(user, link_params) do
       {:ok, _link} ->
         {:noreply,
          socket

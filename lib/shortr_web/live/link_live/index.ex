@@ -3,10 +3,18 @@ defmodule ShortrWeb.LinkLive.Index do
 
   alias Shortr.Links
   alias Shortr.Links.Link
+  alias Shortr.Accounts
 
   @impl true
-  def mount(_params, _session, socket) do
-    {:ok, assign(socket, :links, list_links())}
+  def mount(_params, %{"user_token" => user_token}, socket) do
+    user = Accounts.get_user_by_session_token(user_token)
+
+    new_assigns =
+      socket
+      |> assign(:links, Links.list_links(user.id))
+      |> assign(:current_user_id, user.id)
+
+    {:ok, new_assigns}
   end
 
   @impl true
@@ -45,10 +53,6 @@ defmodule ShortrWeb.LinkLive.Index do
     link = Links.get_link!(id)
     {:ok, _} = Links.delete_link(link)
 
-    {:noreply, assign(socket, :links, list_links())}
-  end
-
-  defp list_links do
-    Links.list_links()
+    {:noreply, assign(socket, :links, Links.list_links(socket.assigns.current_user_id))}
   end
 end
