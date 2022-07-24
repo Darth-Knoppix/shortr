@@ -18,12 +18,17 @@ defmodule ShortrWeb.Router do
   end
 
   scope "/", ShortrWeb do
-    pipe_through :browser
+    pipe_through [:browser, :require_authenticated_user]
 
-    live "/", LinkLive.Index, :index
+    live "/l/listings", LinkLive.Index, :index
     live "/l/new", LinkLive.Index, :new
     live "/l/:id/edit", LinkLive.Index, :edit
     live "/l/:id", LinkLive.Index, :show
+  end
+
+  scope "/", ShortrWeb do
+    pipe_through :browser
+    get "/", MarketingController, :index
     get "/s/:id", LinkController, :get_and_redirect
   end
 

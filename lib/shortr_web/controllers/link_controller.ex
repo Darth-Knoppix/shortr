@@ -1,5 +1,6 @@
 defmodule ShortrWeb.LinkController do
   use ShortrWeb, :controller
+
   alias Shortr.Links
   alias Shortr.Metrics
 

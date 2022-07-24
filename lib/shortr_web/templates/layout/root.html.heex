@@ -11,16 +11,32 @@
   </head>
   <body>
     <header class="navbar bg-base-100">
-    <div class="flex-1">
-      <%= link "Shortr", to: Routes.link_index_path(@conn, :index), class: "btn btn-ghost normal-case text-xl" %>
-    </div>
+      <div class="flex-1">
+        <%= if @current_user do %>
+          <%= link "Shortr", to: Routes.link_index_path(@conn, :index), class: "btn btn-ghost normal-case text-xl" %>
+        <% else %>
+          <%= link "Shortr", to: Routes.marketing_path(@conn, :index), class: "btn btn-ghost normal-case text-xl" %>
+        <% end %>
+      </div>
+
+      <%= if @current_user do %>
+        <div class="flex mx-4">
+          <div class="avatar placeholder mr-2">
+            <div class="bg-neutral-focus text-neutral-content w-8 mask mask-squircle">
+              <span class="text-xs"><%= String.first(@current_user.email) %></span>
+            </div>
+          </div>
+          <span class="text-bold"><%= @current_user.email %></span>
+        </div>
+      <% end %>
+
       <nav class="flex-none">
         <ul class="menu menu-horizontal p-0">
           <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
             <li><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
           <% end %>
+          <%= render "_user_menu.html", assigns %>
         </ul>
-        <%= render "_user_menu.html", assigns %>
       </nav>
     </header>
     <main class="container mx-auto py-8">

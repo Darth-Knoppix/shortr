@@ -1,27 +1,48 @@
-<h1>Log in</h1>
-
-<.form let={f} for={@conn} action={Routes.user_session_path(@conn, :create)} as={:user}>
-  <%= if @error_message do %>
-    <div class="alert alert-danger">
-      <p><%= @error_message %></p>
+<div class="hero min-h-screen bg-base-200">
+  <div class="hero-content flex-col w-full max-w-xl">
+    <div class="text-center lg:text-left">
+      <h1 class="text-5xl font-bold">Log in</h1>
     </div>
-  <% end %>
 
-  <%= label f, :email %>
-  <%= email_input f, :email, required: true %>
+    <div class="card flex-shrink-0 w-full shadow-2xl bg-base-100">
+      <.form let={f} for={@conn} action={Routes.user_session_path(@conn, :create)} as={:user}, class="card-body">
+        <%= if @error_message do %>
+          <div class="alert alert-danger">
+            <p><%= @error_message %></p>
+          </div>
+        <% end %>
 
-  <%= label f, :password %>
-  <%= password_input f, :password, required: true %>
+        <div class="form-control">
+          <%= label f, :email, class: "label" %>
+          <%= email_input f, :email, required: true, class: "input input-bordered", autocomplete: "email" %>
+          <%= error_tag f, :email %>
+        </div>
 
-  <%= label f, :remember_me, "Keep me logged in for 60 days" %>
-  <%= checkbox f, :remember_me %>
+        <div class="form-control">
+          <%= label f, :password, class: "label" %>
+          <%= password_input f, :password, required: true, class: "input input-bordered", autocomplete: "password" %>
+          <%= error_tag f, :password %>
+        </div>
 
-  <div>
-    <%= submit "Log in" %>
+        <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new), class: "label-text-alt link link-hover" %>
+
+        <div class="form-control">
+          <%= label f, :remember_me, class: "label cursor-pointer justify-start" do %>
+            <%= checkbox f, :remember_me, class: "checkbox" %>
+            <span class="label-text ml-2">Keep me logged in for 60 days</span>
+          <% end %>
+        </div>
+
+        <div class="form-control mt-6">
+            <%= submit "Log in", class: "btn btn-primary" %>
+          </div>
+      </.form>
+    </div>
+
+    <div class="divider">OR</div>
+    <div class="flex items-center">
+      <p class="mr-2">If you haven't registerd yet —</p>
+      <%= link "Register", to: Routes.user_registration_path(@conn, :new), class: "btn btn-secondary btn-outline btn-sm" %>
+    </div>
   </div>
-</.form>
-
-<p>
-  <%= link "Register", to: Routes.user_registration_path(@conn, :new) %> |
-  <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new) %>
-</p>
+</div>
