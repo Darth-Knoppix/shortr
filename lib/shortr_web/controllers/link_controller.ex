@@ -13,7 +13,7 @@ defmodule ShortrWeb.LinkController do
     [agent | _] = Plug.Conn.get_req_header(conn, "user-agent")
     link = Links.get_link!(id)
 
-    Metrics.create_visit(link, agent: agent, ip: remote_ip)
+    Metrics.create_visit(link, %{agent: agent, ip: remote_ip})
 
     redirect(conn, external: Map.get(link, :url))
   end
